@@ -1,0 +1,9 @@
+.edit-button {
+    margin: 0 0 6px 0;
+    width: 18px;
+    height: 18px;
+    background-image: url(../../images/edit.svg);
+    border: 1px solid #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+}

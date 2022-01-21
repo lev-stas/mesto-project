@@ -1,0 +1,17 @@
+.add-button {
+    width: 282px;
+    min-height: 50px;
+    margin: 36px auto;
+    background-image: url(../../images/add-button.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #fff;
+}
+
+@media screen and (min-width: 581px) {
+    .add-button {
+        max-width: 150px;
+        justify-self: end;
+        margin: 0;
+    }
+}
