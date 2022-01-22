@@ -1,0 +1,21 @@
+.popup__submit {
+    margin: auto auto 25px;
+    width: 238px;
+    height: 46px;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    text-align: center;
+}
+
+.popup__submit:hover {
+    background-color: #000000cc;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 581px) {
+    .popup__submit {
+        width: 358px;
+        margin: auto auto 37px;
+    }
+}

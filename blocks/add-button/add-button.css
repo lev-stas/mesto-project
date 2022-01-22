@@ -8,6 +8,10 @@
     border: 1px solid #fff;
 }
 
+.add-button:hover {
+    opacity: 60%;
+}
+
 @media screen and (min-width: 581px) {
     .add-button {
         max-width: 150px;

@@ -5,3 +5,11 @@
     margin-right: 20px;
     align-self: center;
 }
+
+.like-icon:active {
+    background-image: url(../../images/like-icin-black.png);
+}
+
+.like-icon:hover {
+    background-image: url(../../images/like-icon-gray.svg);
+}

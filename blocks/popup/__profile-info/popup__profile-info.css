@@ -1,0 +1,23 @@
+.popup__profile-info {
+    margin: 0;
+    padding: 0;
+    width: 282px;
+    height: 322px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    background-color: #fff;
+    border-radius: 10px;
+    position: fixed;
+    top: 123px;
+    left: calc((100vw - 282px)/2);
+}
+
+@media screen and (min-width: 581px) {
+    .popup__profile-info {
+        width: 430px;
+        height: 330px;
+        top: 195px;
+        left: calc((100vw - 430px)/2);
+    }
+}

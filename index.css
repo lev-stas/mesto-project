@@ -2,6 +2,13 @@
 @import url(./vendor/fonts/fonts.css);
 @import url(./blocks/page/page.css);
 @import url(./blocks/header/header.css);
+@import url(./blocks/popup/popup.css);
+@import url(./blocks/popup/_state/popup_opened.css);
+@import url(./blocks/popup/__profile-info/popup__profile-info.css);
+@import url(./blocks/popup/__close-button/popup__close-button.css);
+@import url(./blocks/popup/__title/popup__title.css);
+@import url(./blocks/popup/__field/popup__field.css);
+@import url(./blocks/popup/__submit/popup__submit.css);
 @import url(./blocks/logo/logo.css);
 @import url(./blocks/line/line.css);
 @import url(./blocks/main/main.css);
