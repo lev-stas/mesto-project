@@ -1,14 +1,19 @@
 .profile__subtitle {
-    margin-top: 14px;
+    margin: 14px auto 0;
     font-size: 14px;
     line-height: 16.94px;
     font-weight: 400;
     color: #fff;
 }
 
+@media screen and (min-width: 581px) {
+    .profile__subtitle {
+        margin: 14px 0 0;
+    }
+}
+
 @media screen and (min-width: 880px) {
     .profile__subtitle {
-        margin-top: 16px;
         font-size: 18px;
         line-height: 21.78px;
     }
