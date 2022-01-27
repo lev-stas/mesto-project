@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -14,68 +14,59 @@
         <img src="./images/logo.svg" alt="Логотип Mesto" class="logo">
     </header>
     <main class="main">
-        <form class="popup">
-            <fieldset class="popup__profile-info">
-                <div class="popup__close-button"></div>
-                <p class="popup__title">Редактировать профиль</p>
-                <input type="text" class="popup__field" placeholder="Жак-Ив Кусто">
-                <input type="text" class="popup__field" placeholder="Исследователь океана">
-                <input type="submit" class="popup__submit" value="Сохранить">
-            </fieldset>
-        </form>
         <section class="profile">
             <img src="./images/kusto.jpg" alt="Фото Жака-Ив Кусто" class="avatar">
             <div class="profile__info">
                 <div class="profile__name">
                     <h1 class="profile__title"> Жак-Ив Кусто</h1>
-                    <div class="edit-button"></div>
+                    <button class="edit-button"></button>
                 </div>
                 <p class="profile__subtitle">Исследователь океана</p>
             </div>
 
-            <div class="add-button"></div>
+            <button class="add-button"></button>
         </section>
         <section class="place-cards">
             <div class="card">
                 <img src="./images/eklizi-burun.jpg" alt="Вид с вершины Анга-Бурун" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Крымские горы</h2>
-                    <div class="like-icon"></div>
+                    <button class="like-icon"></button>
                 </div>
             </div>
             <div class="card">
                 <img src="./images/kolskiy.jpg" alt="Кольский полуостров" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Кольский полуостров</h2>
-                    <div class="like-icon"></div>
+                    <button class="like-icon"></button>
                 </div>
             </div>
             <div class="card">
                 <img src="./images/ladoga.jpg" alt="Ладожские шхеры" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Ладожские шхеры</h2>
-                    <div class="like-icon"></div>
+                    <button class="like-icon"></button>
                 </div>
             </div>
             <div class="card">
                 <img src="./images/tarkhankut.jpg" alt="Маяк на мысе Тарханкут" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Мыс Тарханкут</h2>
-                    <div class="like-icon"></div>
+                    <button class="like-icon"></button>
                 </div>
             </div>
             <div class="card">
                 <img src="./images/peterburg.jpg" alt="Вид на Неву в Санкт-Петербурге" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Санкт-Петербург</h2>
-                    <div class="like-icon"></div>
+                    <button class="like-icon"></button>
                 </div>
             </div>
             <div class="card">
                 <img src="./images/karelia.jpg" alt="Дом на берегу озера" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Карелия</h2>
-                    <div class="like-icon"></div>
+                    <button class="like-icon"></button>
                 </div>
             </div>
         </section>
@@ -83,6 +74,15 @@
     <footer class="footer">
         <p class="footer__text">&copy; 2022 Mesto Russia</p>
     </footer>
+    <form class="popup popup_opened">
+        <fieldset class="popup__profile-info">
+            <button name="profile-close-button" class="popup__close-button"></button>
+            <p class="popup__title">Редактировать профиль</p>
+            <input type="text" class="popup__field" name="profile-name" placeholder="Жак-Ив Кусто">
+            <input type="text" class="popup__field" name="profile-description" placeholder="Исследователь океана">
+            <button type="submit" class="popup__submit" name="profile-submit-button">Сохранить</button>
+        </fieldset>
+    </form>
 </body>
 
 </html>

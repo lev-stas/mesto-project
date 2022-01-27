@@ -1,13 +1,22 @@
 .edit-button {
-    margin: 0 0 6px 0;
+    align-self: center;
+    margin: 0;
     width: 18px;
     height: 18px;
     background-image: url(../../images/edit.svg);
     border: 1px solid #fff;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
 }
 
 .edit-button:hover {
     opacity: 60%;
+}
+
+@media screen and (min-width: 880px) {
+    .edit-button {
+        margin-top: 6px;
+    }
 }

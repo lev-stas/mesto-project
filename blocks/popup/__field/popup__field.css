@@ -4,6 +4,11 @@
     margin: 0 auto 30px;
     width: 238px;
     font-family: inherit;
+    font-size: 14px;
+    line-height: 16.94px;
+    font-weight: 400;
+    color: #000;
+    padding-bottom: 13px;
 }
 
 .popup__field::-webkit-input-placeholder {

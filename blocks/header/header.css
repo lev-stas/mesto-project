@@ -4,7 +4,7 @@
     border-bottom: 1px solid #545454b3;
 }
 
-@media screen and (min-width: 581px) {
+@media screen and (min-width: 900px) {
     .header {
         padding: 45px 0 41px;
     }
