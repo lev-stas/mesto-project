@@ -7,8 +7,13 @@
     background-color: transparent;
     background-size: contain;
     border: none;
+    background-repeat: no-repeat;
 }
 
 .like-icon:hover {
     background-image: url(../../images/like-icon-gray.svg);
+}
+
+.like-icon:active {
+    background-image: url(../../../images/like-icon-black.png);
 }
