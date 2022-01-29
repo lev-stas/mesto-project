@@ -19,54 +19,53 @@
             <div class="profile__info">
                 <div class="profile__name">
                     <h1 class="profile__title"> Жак-Ив Кусто</h1>
-                    <button class="edit-button"></button>
+                    <button type="button" class="edit-button" name="edit-profile-button"></button>
                 </div>
                 <p class="profile__subtitle">Исследователь океана</p>
             </div>
-
-            <button class="add-button"></button>
+            <button type="button" class="add-button" name="add-card-button"></button>
         </section>
         <section class="place-cards">
             <div class="card">
                 <img src="./images/eklizi-burun.jpg" alt="Вид с вершины Анга-Бурун" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Крымские горы</h2>
-                    <button class="like-icon"></button>
+                    <button type="button" class="like-icon" name="crimea-like-button"></button>
                 </div>
             </div>
             <div class="card">
                 <img src="./images/kolskiy.jpg" alt="Кольский полуостров" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Кольский полуостров</h2>
-                    <button class="like-icon"></button>
+                    <button type="button" class="like-icon" name="kolskiy-like-button"></button>
                 </div>
             </div>
             <div class="card">
                 <img src="./images/ladoga.jpg" alt="Ладожские шхеры" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Ладожские шхеры</h2>
-                    <button class="like-icon"></button>
+                    <button type="button" class="like-icon" name="ladoga-like-button"></button>
                 </div>
             </div>
             <div class="card">
                 <img src="./images/tarkhankut.jpg" alt="Маяк на мысе Тарханкут" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Мыс Тарханкут</h2>
-                    <button class="like-icon"></button>
+                    <button type="button" class="like-icon" name="tarkhankut-like-button"></button>
                 </div>
             </div>
             <div class="card">
                 <img src="./images/peterburg.jpg" alt="Вид на Неву в Санкт-Петербурге" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Санкт-Петербург</h2>
-                    <button class="like-icon"></button>
+                    <button type="button" class="like-icon" name="petersburg-like-button"></button>
                 </div>
             </div>
             <div class="card">
                 <img src="./images/karelia.jpg" alt="Дом на берегу озера" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Карелия</h2>
-                    <button class="like-icon"></button>
+                    <button type="button" class="like-icon" name="karelia-like-button"></button>
                 </div>
             </div>
         </section>
@@ -74,9 +73,9 @@
     <footer class="footer">
         <p class="footer__text">&copy; 2022 Mesto Russia</p>
     </footer>
-    <form class="popup">
+    <form name="edit-profile-form" class="popup">
         <fieldset class="popup__profile-info">
-            <button name="profile-close-button" class="popup__close-button"></button>
+            <button type="button" name="profile-close-button" class="popup__close-button"></button>
             <p class="popup__title">Редактировать профиль</p>
             <input type="text" class="popup__field" name="profile-name" placeholder="Жак-Ив Кусто">
             <input type="text" class="popup__field" name="profile-description" placeholder="Исследователь океана">

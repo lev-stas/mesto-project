@@ -2,10 +2,10 @@
     display: grid;
     align-items: center;
     column-gap: 30px;
-    margin: 0 17px 36px
+    margin: 0 17px;
 }
 
-@media screen and (min-width: 561px) {
+@media screen and (min-width: 601px) {
     .profile {
         grid-template-columns: 120px max-content 1fr;
         max-width: 547px;

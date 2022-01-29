@@ -4,6 +4,7 @@
     min-height: 46px;
     background-color: #000;
     border: none;
+    border-radius: 2px;
     color: #fff;
     text-align: center;
 }

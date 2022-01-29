@@ -8,9 +8,11 @@
 
 @media screen and (min-width: 581px) {
     .popup__title {
+        min-width: 330px;
         font-size: 24px;
         line-height: 29.05px;
         font-weight: 900;
         margin: 38px auto 54px;
+        text-align: start;
     }
 }

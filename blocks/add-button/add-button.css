@@ -15,10 +15,10 @@
     opacity: 60%;
 }
 
-@media screen and (min-width: 561px) {
+@media screen and (min-width: 601px) {
     .add-button {
         max-width: 150px;
         justify-self: end;
-        margin: 0;
+        margin: 26px 0 0 0;
     }
 }
