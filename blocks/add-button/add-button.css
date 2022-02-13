@@ -9,6 +9,7 @@
     border-radius: 2px;
     background-color: transparent;
     background-size: auto;
+    cursor: pointer;
 }
 
 .add-button:hover {
