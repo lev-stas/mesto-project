@@ -26,7 +26,11 @@
             <button type="button" class="add-button" name="add-card-button"></button>
         </section>
         <section class="place-cards">
-            <div class="card">
+            <!-- <div class="card">
+                <button type="button" class="trash-button" name="card-deletion-button">
+                  <img src="./images/trash-top.svg" alt="верхняя часть урны" class="trash-button__icon-top">
+                  <img src="./images/trash-bottom.svg" alt="нижняя часть урны" class="trash-button__icon-bottom">
+                </button>
                 <img src="./images/eklizi-burun.jpg" alt="Вид с вершины Анга-Бурун" class="card__picture">
                 <div class="card__text-field">
                     <h2 class="card__title">Крымские горы</h2>
@@ -67,7 +71,7 @@
                     <h2 class="card__title">Карелия</h2>
                     <button type="button" class="like-icon" name="karelia-like-button"></button>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
     <footer class="footer">
@@ -82,6 +86,19 @@
             <button type="submit" class="popup__submit" name="profile-submit-button">Сохранить</button>
         </fieldset>
     </form>
+    <template id="place-card">
+      <div class="card">
+        <button type="button" class="trash-button">
+          <img src="./images/trash-top.svg" alt="верхняя часть урны" class="trash-button__icon-top">
+          <img src="./images/trash-bottom.svg" alt="нижняя часть урны" class="trash-button__icon-bottom">
+        </button>
+        <img  class="card__picture">
+        <div class="card__text-field">
+            <h2 class="card__title"></h2>
+            <button type="button" class="like-icon"></button>
+        </div>
+      </div>
+    </template>
     <script src="./script.js"></script>
 </body>
 
