@@ -8,12 +8,9 @@
     background-size: contain;
     border: none;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .like-icon:hover {
     background-image: url(../../images/like-icon-gray.svg);
-}
-
-.like-icon:active {
-    background-image: url(../../images/like-icon-active.svg);
 }
