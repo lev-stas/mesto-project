@@ -26,52 +26,6 @@
             <button type="button" class="add-button" name="add-card-button"></button>
         </section>
         <section class="place-cards">
-            <!-- <div class="card">
-                <button type="button" class="trash-button" name="card-deletion-button">
-                  <img src="./images/trash-top.svg" alt="верхняя часть урны" class="trash-button__icon-top">
-                  <img src="./images/trash-bottom.svg" alt="нижняя часть урны" class="trash-button__icon-bottom">
-                </button>
-                <img src="./images/eklizi-burun.jpg" alt="Вид с вершины Анга-Бурун" class="card__picture">
-                <div class="card__text-field">
-                    <h2 class="card__title">Крымские горы</h2>
-                    <button type="button" class="like-icon" name="crimea-like-button"></button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./images/kolskiy.jpg" alt="Кольский полуостров" class="card__picture">
-                <div class="card__text-field">
-                    <h2 class="card__title">Кольский полуостров</h2>
-                    <button type="button" class="like-icon" name="kolskiy-like-button"></button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./images/ladoga.jpg" alt="Ладожские шхеры" class="card__picture">
-                <div class="card__text-field">
-                    <h2 class="card__title">Ладожские шхеры</h2>
-                    <button type="button" class="like-icon" name="ladoga-like-button"></button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./images/tarkhankut.jpg" alt="Маяк на мысе Тарханкут" class="card__picture">
-                <div class="card__text-field">
-                    <h2 class="card__title">Мыс Тарханкут</h2>
-                    <button type="button" class="like-icon" name="tarkhankut-like-button"></button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./images/peterburg.jpg" alt="Вид на Неву в Санкт-Петербурге" class="card__picture">
-                <div class="card__text-field">
-                    <h2 class="card__title">Санкт-Петербург</h2>
-                    <button type="button" class="like-icon" name="petersburg-like-button"></button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./images/karelia.jpg" alt="Дом на берегу озера" class="card__picture">
-                <div class="card__text-field">
-                    <h2 class="card__title">Карелия</h2>
-                    <button type="button" class="like-icon" name="karelia-like-button"></button>
-                </div>
-            </div> -->
         </section>
     </main>
     <footer class="footer">
@@ -86,6 +40,13 @@
             <button type="submit" class="popup__submit" name="profile-submit-button">Сохранить</button>
         </fieldset>
     </form>
+    <div class="picture-popup">
+        <div class="picture-popup__image-box">
+            <button type="button" name="picture-close-button" class="popup__close-button"></button>
+            <img src="https://images.unsplash.com/photo-1609252880721-0d953278bcda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2835&q=80" alt="Тульская область" class="picture-popup__image">
+            <p class="picture-popup__label"></p>
+        </div>
+    </div>
     <template id="place-card">
       <div class="card">
         <button type="button" class="trash-button">

@@ -1,18 +1,26 @@
 const page = document.querySelector('.page');
-const profile = page.querySelector('.profile');
 
+// profile elements
+const profile = page.querySelector('.profile');
 const editProfileButton = profile.querySelector('.edit-button');
 const addCardButton = profile.querySelector('.add-button');
 const profileTitle = profile.querySelector('.profile__title');
 const profileSubtitle = profile.querySelector('.profile__subtitle');
 
+//popup elements
 const popup = page.querySelector('.popup');
 const closePopup = popup.querySelector('.popup__close-button');
 let popupTitle = popup.querySelector('.popup__title');
 let popupNameField = popup.querySelector('.popup__field[name="profile-name"]');
 let popupDescriptionField = popup.querySelector('.popup__field[name="profile-description"]');
 let popupSubmitButton = popup.querySelector('.popup__submit');
+const picturePopup = page.querySelector('.picture-popup');
+let picturePopupImage = picturePopup.querySelector('.picture-popup__image');
+let picturePopupLabel = picturePopup.querySelector('.picture-popup__label');
+const closePicturePopup = picturePopup.querySelector('.popup__close-button');
 
+
+//place cards elements
 const cardsContainer = page.querySelector('.place-cards')
 const cardTemplate = document.querySelector('#place-card').content;
 
@@ -42,8 +50,7 @@ const startImagesList = [{
     }
 ];
 
-
-
+//functions
 function openPopupWindow(title, field1, field2, submitButtonName) {
     popup.classList.add('popup_opened');
     console.log(field1);
@@ -57,6 +64,10 @@ function openPopupWindow(title, field1, field2, submitButtonName) {
 
 function closePopupWindow() {
     popup.classList.remove('popup_opened');
+};
+
+function closePicturePopupWindow() {
+    picturePopup.classList.remove('popup_opened');
 };
 
 function editProfileInfo() {
@@ -79,6 +90,21 @@ function addPlaceCard() {
     cardElement.querySelector('.card__picture').alt = placeTitle;
     cardElement.querySelector('.like-icon').name = `${cardsNumber}-like-button`;
     cardElement.querySelector('.trash-button').name = `${cardsNumber}-delition-button`;
+    const likeButton = cardElement.querySelector('.like-icon');
+    likeButton.addEventListener('click', function(evt) {
+        evt.target.classList.toggle('like-icon_active');
+        evt.target.classList.toggle('like-icon');
+    });
+    const trashButton = cardElement.querySelector('.trash-button');
+    trashButton.addEventListener('click', function(evt) {
+        evt.target.closest('.card').remove();
+    });
+    const openPicture = cardElement.querySelector('.card__picture');
+    openPicture.addEventListener('click', function(evt) {
+        picturePopup.classList.add('popup_opened');
+        picturePopupImage.src = evt.target.src;
+        picturePopupLabel.textContent = evt.target.alt;
+    });
     cardsContainer.prepend(cardElement);
     popupNameField.value = '';
     popupDescriptionField.value = '';
@@ -93,9 +119,26 @@ for (let i = 0; i < startImagesList.length; i = i + 1) {
     cardElement.querySelector('.card__picture').alt = startImagesList[i].title;
     cardElement.querySelector('.like-icon').name = `${i}-like-button`;
     cardElement.querySelector('.trash-button').name = `${i}-delition-button`;
-    cardsContainer.append(cardElement)
-
+    const likeButton = cardElement.querySelector('.like-icon');
+    likeButton.addEventListener('click', function(evt) {
+        evt.target.classList.toggle('like-icon_active');
+        evt.target.classList.toggle('like-icon');
+    });
+    const trashButton = cardElement.querySelector('.trash-button');
+    trashButton.addEventListener('click', function(evt) {
+        evt.target.closest('.card').remove();
+    });
+    const openPicture = cardElement.querySelector('.card__picture');
+    openPicture.addEventListener('click', function(evt) {
+        picturePopup.classList.add('popup_opened');
+        picturePopupImage.src = evt.target.src;
+        picturePopupLabel.textContent = evt.target.alt;
+    })
+    cardsContainer.append(cardElement);
 };
+
+
+//Event Handlers
 
 editProfileButton.addEventListener('click', function() {
     let profileTitle = profile.querySelector('.profile__title');
@@ -120,5 +163,6 @@ popup.addEventListener('submit', function(evt) {
 })
 
 closePopup.addEventListener('click', closePopupWindow);
+closePicturePopup.addEventListener('click', closePicturePopupWindow);
 
 console.log(cardsContainer.childElementCount)
