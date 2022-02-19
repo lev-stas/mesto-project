@@ -8,4 +8,5 @@
     background-size: contain;
     border: none;
     cursor: pointer;
+    background-repeat: no-repeat;
 }

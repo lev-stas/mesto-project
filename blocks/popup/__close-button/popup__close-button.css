@@ -2,10 +2,11 @@
     background-image: url(../../../images/icon-close.svg);
     width: 20px;
     height: 20px;
-    align-self: end;
+    align-self: flex-end;
     margin-top: -36px;
     background-color: transparent;
     background-size: contain;
+    background-repeat: no-repeat;
     border: none;
 }
 
