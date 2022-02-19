@@ -31,22 +31,35 @@
     <footer class="footer">
         <p class="footer__text">&copy; 2022 Mesto Russia</p>
     </footer>
-    <form name="edit-profile-form" class="popup">
-        <fieldset class="popup__profile-info">
-            <button type="button" name="profile-close-button" class="popup__close-button"></button>
-            <p class="popup__title">Редактировать профиль</p>
-            <input type="text" class="popup__field" name="profile-name" placeholder="Жак-Ив Кусто">
-            <input type="text" class="popup__field" name="profile-description" placeholder="Исследователь океана">
-            <button type="submit" class="popup__submit" name="profile-submit-button">Сохранить</button>
-        </fieldset>
-    </form>
-    <div class="picture-popup">
-        <div class="picture-popup__image-box">
+    <article class="popup" id="profile-form">
+        <form name="edit-profile-form" class="popup__form">
+            <fieldset class="popup__container">
+                <button type="button" name="profile-close-button" class="popup__close-button"></button>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <input type="text" class="popup__field" name="profile-name" placeholder="Жак-Ив Кусто">
+                <input type="text" class="popup__field" name="profile-description" placeholder="Исследователь океана">
+                <button type="submit" class="popup__submit" name="profile-submit-button">Сохранить</button>
+            </fieldset>
+        </form>
+    </article>
+    <article class="popup" id="add-card-form">
+        <form name="edit-profile-form" class="popup__form">
+            <fieldset class="popup__container">
+                <button type="button" name="profile-close-button" class="popup__close-button"></button>
+                <h2 class="popup__title">Новое место</h2>
+                <input type="text" class="popup__field" name="card-name" placeholder="Название">
+                <input type="text" class="popup__field" name="card-link" placeholder="Ссылка на картинку">
+                <button type="submit" class="popup__submit" name="card-save-button">Создать</button>
+            </fieldset>
+        </form>
+    </article>
+    <article class="popup" id="picture-popup">
+        <div class="popup__image-box">
             <button type="button" name="picture-close-button" class="popup__close-button"></button>
-            <img src="https://images.unsplash.com/photo-1609252880721-0d953278bcda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2835&q=80" alt="Тульская область" class="picture-popup__image">
-            <p class="picture-popup__label"></p>
+            <img src="https://images.unsplash.com/photo-1609252880721-0d953278bcda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2835&q=80" alt="Тульская область" class="popup__image">
+            <h3 class="popup__label">Тульская область</h3>
         </div>
-    </div>
+    </article>
     <template id="place-card">
       <div class="card">
         <button type="button" class="trash-button">
