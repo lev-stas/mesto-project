@@ -7,6 +7,9 @@ const addCardButton = profile.querySelector('.add-button');
 const profileTitle = profile.querySelector('.profile__title');
 const profileSubtitle = profile.querySelector('.profile__subtitle');
 
+//Common popup elements
+
+
 //Profile popup elements
 const profilePopup = page.querySelector('#profile-form');
 const closeProfilePopup = profilePopup.querySelector('.popup__close-button');
@@ -109,13 +112,29 @@ for (let i = 0; i < startImagesList.length; i = i + 1) {
 
 
 //Event Handlers
+
+page.addEventListener('click', function(evt) {
+    if (evt.target.classList.contains('popup_opened')) {
+        closePopup(evt.target);
+    };
+});
+
+page.addEventListener('keydown', function(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    };
+
+});
+
 editProfileButton.addEventListener('click', function() {
     openPopup(profilePopup);
 
 });
 closeProfilePopup.addEventListener('click', function() {
     closePopup(profilePopup);
-})
+});
+
 
 addCardButton.addEventListener('click', function() {
     openPopup(cardPopup);
