@@ -1,5 +1,5 @@
 .popup__submit {
-    margin: auto auto 25px;
+    margin: 31px auto 25px;
     width: 238px;
     min-height: 46px;
     background-color: #000;
@@ -17,6 +17,6 @@
 @media screen and (min-width: 581px) {
     .popup__submit {
         width: 358px;
-        margin: auto auto 37px;
+        margin: 31px auto 37px;
     }
 }

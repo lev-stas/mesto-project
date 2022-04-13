@@ -7,7 +7,10 @@ const addCardButton = profile.querySelector('.add-button');
 const profileTitle = profile.querySelector('.profile__title');
 const profileSubtitle = profile.querySelector('.profile__subtitle');
 
-//Common popup elements
+//from elements
+const form = page.querySelector('.popup__form');
+const formInput = form.querySelector('.popup__field');
+//const inputFields = Array.from(form.querySelectorAll('.popup__field'));
 
 
 //Profile popup elements
@@ -100,6 +103,68 @@ function createCard(title, link) {
     return cardElement;
 };
 
+//form validation functions
+const showInputError = (formElement, inputElement, errorMessage) => {
+    const errorElement = formElement.querySelector(`#${inputElement.name}-span`);
+    inputElement.classList.add('popup__field_invalid');
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add('popup__error_active');
+
+};
+
+const hideInputError = (formElement, inputElement) => {
+    const errorElement = formElement.querySelector(`#${inputElement.name}-span`);
+    inputElement.classList.remove('popup__field_invalid');
+    errorElement.textContent = '';
+    errorElement.classList.remove('popup__error_active');
+};
+
+const checkInputValidity = (formElement, inputElement) => {
+    if (!inputElement.validity.valid) {
+        showInputError(formElement, inputElement, inputElement.validationMessage);
+    } else {
+        hideInputError(formElement, inputElement);
+    }
+
+};
+
+
+const seteventLinstener = (formElement) => {
+    const inputList = Array.from(formElement.querySelectorAll('.popup__field'));
+    const buttonElement = formElement.querySelector('.popup__submit');
+    buttonActivation(inputList, buttonElement);
+    inputList.forEach((inputElement) => {
+        inputElement.addEventListener('input', function() {
+            checkInputValidity(formElement, inputElement);
+            buttonActivation(inputList, buttonElement);
+        });
+    });
+};
+
+const enableValidation = () => {
+    const formList = Array.from(page.querySelectorAll('.popup__form'));
+    formList.forEach((formElement) => {
+        formElement.addEventListener('submit', function(evt) {
+            evt.preventDefault();
+        });
+        seteventLinstener(formElement);
+    });
+};
+
+const isValidInput = (inputList) => {
+    return inputList.some((inputElement) => {
+        return !inputElement.validity.valid;
+    });
+};
+
+const buttonActivation = (inputList, buttonElement) => {
+    if (isValidInput(inputList)) {
+        buttonElement.classList.add('popup__submit_inactive')
+    } else {
+        buttonElement.classList.remove('popup__submit_inactive')
+    };
+};
+
 
 // Default page behavior
 for (let i = 0; i < startImagesList.length; i = i + 1) {
@@ -113,6 +178,15 @@ for (let i = 0; i < startImagesList.length; i = i + 1) {
 
 //Event Handlers
 
+//Forms Validation Handlers
+
+form.addEventListener('submit', function(evt) {
+    evt.preventDefault();
+});
+enableValidation();
+
+
+//
 page.addEventListener('click', function(evt) {
     if (evt.target.classList.contains('popup_opened')) {
         closePopup(evt.target);
