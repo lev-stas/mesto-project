@@ -6,16 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./index.css">
 </head>
 
 <body class="page">
     <header class="header">
-        <img src="./images/logo.svg" alt="Логотип Mesto" class="logo">
+        <img src="<%=require('./images/logo.svg')%>" alt="Логотип Mesto" class="logo">
     </header>
     <main class="main">
         <section class="profile">
-            <img src="./images/kusto.jpg" alt="Фото Жака-Ив Кусто" class="avatar">
+            <img src="<%=require('./images/kusto.jpg')%>" alt="Фото Жака-Ив Кусто" class="avatar">
             <div class="profile__info">
                 <div class="profile__name">
                     <h1 class="profile__title"> Жак-Ив Кусто</h1>
@@ -36,7 +35,7 @@
             <fieldset class="popup__container">
                 <button type="button" name="profile-close-button" class="popup__close-button"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <input type="text" minlength="2" maxlength="40" class="popup__field" name="profile-name" value="Жак-Ив Кусто" placeholder="Имя" pattern="[а-яА-Яa-zA-Z ]+" required>
+                <input type="text" minlength="2" maxlength="40" class="popup__field" name="profile-name" value="Жак-Ив Кусто" placeholder="Имя" pattern="[а-яА-Яa-zA-Z- ]+" required>
                 <span class="popup__error" id="profile-name-span"></span>
                 <input type="text" minlength="2" maxlength="200" class="popup__field" name="profile-description" value="Исследователь океана" placeholder="О себе" required>
                 <span class="popup__error" id="profile-description-span"></span>
@@ -67,8 +66,8 @@
     <template id="place-card">
       <div class="card">
         <button type="button" class="trash-button">
-          <img src="./images/trash-top.svg" alt="верхняя часть урны" class="trash-button__icon-top">
-          <img src="./images/trash-bottom.svg" alt="нижняя часть урны" class="trash-button__icon-bottom">
+          <img src="<%=require('./images/trash-top.svg')%>" alt="верхняя часть урны" class="trash-button__icon-top">
+          <img src="<%=require('./images/trash-bottom.svg')%>" alt="нижняя часть урны" class="trash-button__icon-bottom">
         </button>
         <img  class="card__picture">
         <div class="card__text-field">
@@ -77,12 +76,6 @@
         </div>
       </div>
     </template>
-    <script type="module" src="./scripts/vars.js"></script>
-    <script type="module" src="./scripts/popup.js"></script>
-    <script type="module" src="./scripts/validation.js"></script>
-    <script type="module" src="./scripts/cards.js"></script>
-    <script type="module" src="./scripts/profile.js"></script>
-    <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>
