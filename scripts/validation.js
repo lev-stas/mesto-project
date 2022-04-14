@@ -50,7 +50,7 @@ const seteventLinstener = (formElement) => {
     });
 };
 
-const enableValidation = () => {
+export const enableValidation = () => {
     const formList = Array.from(page.querySelectorAll('.popup__form'));
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', function(evt) {
@@ -59,5 +59,3 @@ const enableValidation = () => {
         seteventLinstener(formElement);
     });
 };
-
-enableValidation();

@@ -1,19 +1,10 @@
 import {
     cardTemplate,
-    picturePopupImage,
-    picturePopupLabel,
-    addCardButton,
-    cardPopup,
-    closeCardPopup,
-    closePicturePopup,
     picturePopup,
-    cardForm,
-    cardPopupNameField,
-    cardPopupDescriptionField,
-    cardsContainer,
-
+    picturePopupImage,
+    picturePopupLabel
 } from './vars.js';
-import { openPopup, closePopup } from './popup.js';
+import { openPopup } from './popup.js';
 
 export function createCard(title, link) {
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
@@ -37,26 +28,3 @@ export function createCard(title, link) {
     });
     return cardElement;
 };
-
-addCardButton.addEventListener('click', function() {
-    openPopup(cardPopup);
-});
-
-closeCardPopup.addEventListener('click', function() {
-    closePopup(cardPopup);
-});
-
-closePicturePopup.addEventListener('click', function() {
-    closePopup(picturePopup);
-});
-cardForm.addEventListener('submit', function(evt) {
-    evt.preventDefault();
-    const cardTitle = cardPopupNameField.value;
-    const cardLink = cardPopupDescriptionField.value;
-    const cardNumber = cardsContainer.childElementCount + 1;
-    const newCard = createCard(cardTitle, cardLink);
-    cardsContainer.prepend(newCard);
-    cardPopupNameField.value = '';
-    cardPopupDescriptionField.value = '';
-    closePopup(cardPopup);
-});
