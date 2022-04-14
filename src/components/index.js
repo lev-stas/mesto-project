@@ -1,3 +1,7 @@
+//import styles
+import '../index.css';
+
+//import vars
 import {
     startImagesList,
     cardsContainer,
@@ -16,8 +20,10 @@ import {
     picturePopup
 } from './vars.js';
 
+
+//import functions
 import { createCard } from './cards.js';
-import { openPopup, closePopup } from './popup.js';
+import { openPopup, closePopup, clickClosePopup, escapeClosePopup } from './popup.js';
 import { editProfileInfo } from './profile.js';
 import { enableValidation } from './validation.js';
 
@@ -31,23 +37,22 @@ for (let i = 0; i < startImagesList.length; i = i + 1) {
 };
 
 //common popup processing
-page.addEventListener('click', function(evt) {
-    if (evt.target.classList.contains('popup_opened')) {
-        closePopup(evt.target);
-    };
-});
-page.addEventListener('keydown', function(evt) {
-    if (evt.key === 'Escape') {
-        const openedPopup = document.querySelector('.popup_opened');
-        closePopup(openedPopup);
-    };
+// page.addEventListener('click', function(evt) {
+//     if (evt.target.classList.contains('popup_opened')) {
+//         closePopup(evt.target);
+//     };
+// });
+// page.addEventListener('keydown', function(evt) {
+//     if (evt.key === 'Escape') {
+//         const openedPopup = document.querySelector('.popup_opened');
+//         closePopup(openedPopup);
+//     };
 
-});
+// });
 
 //profile processing
 editProfileButton.addEventListener('click', function() {
     openPopup(profilePopup);
-
 });
 closeProfilePopup.addEventListener('click', function() {
     closePopup(profilePopup);
