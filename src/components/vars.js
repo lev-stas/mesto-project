@@ -1,5 +1,13 @@
 export const page = document.querySelector('.page');
-
+export const popups = document.querySelectorAll('.popup');
+export const validationSettings = {
+    form: ".popup__form",
+    input: ".popup__field",
+    button: ".popup__submit",
+    inactiveButton: "popup__submit_inactive",
+    invalidInput: "popup__field_invalid",
+    errorMessage: "popup__error_active",
+};
 // profile elements
 export const profile = page.querySelector('.profile');
 export const editProfileButton = profile.querySelector('.edit-button');
@@ -19,6 +27,7 @@ export const cardPopup = page.querySelector('#add-card-form');
 export const closeCardPopup = cardPopup.querySelector('.popup__close-button');
 export const cardPopupNameField = cardPopup.querySelector('.popup__field[name="card-name"]');
 export const cardPopupDescriptionField = cardPopup.querySelector('.popup__field[name="card-link"]');
+export const createCardButton = cardPopup.querySelector('.popup__submit[name=card-save-button]');
 export const cardForm = cardPopup.querySelector('.popup__form');
 
 
