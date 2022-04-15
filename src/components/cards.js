@@ -18,12 +18,12 @@ export function createCard(title, link) {
     });
     const trashButton = cardElement.querySelector('.trash-button');
     trashButton.addEventListener('click', function(evt) {
-        evt.target.closest('.card').remove();
+        cardElement.remove();
     });
-    const openPicture = cardElement.querySelector('.card__picture');
-    openPicture.addEventListener('click', function(evt) {
+    elementPicture.addEventListener('click', function(evt) {
         openPopup(picturePopup);
         picturePopupImage.src = evt.target.src;
+        picturePopupImage.alt = evt.target.alt;
         picturePopupLabel.textContent = evt.target.alt;
     });
     return cardElement;

@@ -5,19 +5,17 @@ import '../index.css';
 import {
     startImagesList,
     cardsContainer,
-    page,
+    popups,
     editProfileButton,
     profilePopup,
-    closeProfilePopup,
     profileForm,
     addCardButton,
     cardPopup,
-    closeCardPopup,
-    closePicturePopup,
     cardForm,
+    createCardButton,
     cardPopupNameField,
     cardPopupDescriptionField,
-    picturePopup
+    validationSettings
 } from './vars.js';
 
 
@@ -28,35 +26,33 @@ import { editProfileInfo } from './profile.js';
 import { enableValidation } from './validation.js';
 
 //default script
-for (let i = 0; i < startImagesList.length; i = i + 1) {
-    const cardTitle = startImagesList[i].title;
-    const cardLink = startImagesList[i].link;
-    const cardNumber = i + 1;
+
+startImagesList.forEach((startImageItem) => {
+    const cardTitle = startImageItem.title;
+    const cardLink = startImageItem.link;
     const startCard = createCard(cardTitle, cardLink);
     cardsContainer.append(startCard);
-};
+})
 
-//common popup processing
-// page.addEventListener('click', function(evt) {
-//     if (evt.target.classList.contains('popup_opened')) {
-//         closePopup(evt.target);
-//     };
-// });
-// page.addEventListener('keydown', function(evt) {
-//     if (evt.key === 'Escape') {
-//         const openedPopup = document.querySelector('.popup_opened');
-//         closePopup(openedPopup);
-//     };
 
-// });
+//closing popup
+popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close-button')) {
+            closePopup(popup)
+        }
+    })
+})
+
 
 //profile processing
 editProfileButton.addEventListener('click', function() {
     openPopup(profilePopup);
 });
-closeProfilePopup.addEventListener('click', function() {
-    closePopup(profilePopup);
-});
+
 profileForm.addEventListener('submit', function(evt) {
     evt.preventDefault();
     editProfileInfo();
@@ -66,23 +62,19 @@ profileForm.addEventListener('submit', function(evt) {
 addCardButton.addEventListener('click', function() {
     openPopup(cardPopup);
 });
-closeCardPopup.addEventListener('click', function() {
-    closePopup(cardPopup);
-});
-closePicturePopup.addEventListener('click', function() {
-    closePopup(picturePopup);
-});
+
 cardForm.addEventListener('submit', function(evt) {
     evt.preventDefault();
     const cardTitle = cardPopupNameField.value;
     const cardLink = cardPopupDescriptionField.value;
-    const cardNumber = cardsContainer.childElementCount + 1;
     const newCard = createCard(cardTitle, cardLink);
     cardsContainer.prepend(newCard);
-    cardPopupNameField.value = '';
-    cardPopupDescriptionField.value = '';
+    cardForm.reset();
+    createCardButton.classList.add('popup__submit_inactive');
+    createCardButton.disabled = true;
+
     closePopup(cardPopup);
 });
 
 //validation processing
-enableValidation();
+enableValidation(validationSettings);
