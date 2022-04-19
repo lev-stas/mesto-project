@@ -15,19 +15,23 @@ import {
     createCardButton,
     cardPopupNameField,
     cardPopupDescriptionField,
-    validationSettings
+    validationSettings,
+    avatarPopup,
+    avatarOpenButton,
+    avatarForm
 } from './vars.js';
 
 
 //import functions
 import { createCard } from './cards.js';
 import { openPopup, closePopup } from './popup.js';
-import { fillProfile, editProfileInfo } from './profile.js';
+import { fillProfile, editProfileInfo, editAvatar, getProgileImage } from './profile.js';
 import { enableValidation } from './validation.js';
 import { getProfileRequest } from './api.js';
 
 //default script
-fillProfile(getProfileRequest)
+fillProfile(getProfileRequest);
+getProgileImage(getProfileRequest);
 
 
 // getCards();
@@ -62,6 +66,15 @@ editProfileButton.addEventListener('click', function() {
 profileForm.addEventListener('submit', function(evt) {
     evt.preventDefault();
     editProfileInfo();
+});
+
+avatarOpenButton.addEventListener('click', function() {
+    openPopup(avatarPopup);
+});
+
+avatarForm.addEventListener('submit', function(evt) {
+    evt.preventDefault();
+    editAvatar();
 });
 
 //cards processing

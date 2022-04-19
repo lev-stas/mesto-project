@@ -14,7 +14,8 @@
     </header>
     <main class="main">
         <section class="profile">
-            <img src="<%=require('./images/kusto.jpg')%>" alt="Фото Жака-Ив Кусто" class="avatar">
+            <img alt="Фото пользователя" class="avatar">
+            <div class="avatar__overlay"></div>
             <div class="profile__info">
                 <div class="profile__name">
                     <h1 class="profile__title"> </h1>
@@ -30,6 +31,17 @@
     <footer class="footer">
         <p class="footer__text">&copy; 2022 Mesto Russia</p>
     </footer>
+    <article class="popup" id="profile-avatar-form">
+        <form name="edit-profile-avatar" class="popup__form" novalidate>
+            <fieldset class="popup__container">
+                <button type="button" name="profile-close-button" class="popup__close-button"></button>
+                <h2 class="popup__title">Обновить аватар</h2>
+                <input type="url" class="popup__field" name="profile-avatar" placeholder="Введите ссылку на картинку" required>
+                <span class="popup__error" id="profile-avatar-span"></span>
+                <button type="submit" class="popup__submit" name="profile-submit-button">Сохранить</button>
+            </fieldset>
+        </form>
+    </article>
     <article class="popup" id="profile-form">
         <form name="edit-profile-form" class="popup__form" novalidate>
             <fieldset class="popup__container">

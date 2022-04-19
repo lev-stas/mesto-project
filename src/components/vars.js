@@ -14,6 +14,7 @@ export const editProfileButton = profile.querySelector('.edit-button');
 export const addCardButton = profile.querySelector('.add-button');
 export const profileTitle = profile.querySelector('.profile__title');
 export const profileSubtitle = profile.querySelector('.profile__subtitle');
+export const avatar = page.querySelector('.avatar');
 
 //Profile popup elements
 export const profilePopup = page.querySelector('#profile-form');
@@ -21,6 +22,14 @@ export const closeProfilePopup = profilePopup.querySelector('.popup__close-butto
 export const profilePopupDescriptionField = profilePopup.querySelector('.popup__field[name="profile-description"]');
 export const profilePopupNameField = profilePopup.querySelector('.popup__field[name="profile-name"]');
 export const profileForm = profilePopup.querySelector('.popup__form');
+
+//Avatar popup elements
+export const avatarOpenButton = page.querySelector('.avatar__overlay');
+export const avatarPopup = page.querySelector('#profile-avatar-form');
+export const closeAvatarForm = avatarPopup.querySelector('.popup__close-button');
+export const avatarUrlField = avatarPopup.querySelector('.popup__field[name="profile-avatar"]');
+export const avatarForm = avatarPopup.querySelector('.popup__form');
+export const avatarSaveButton = avatarPopup.querySelector('.popup__submit');
 
 //Add card popup elements
 export const cardPopup = page.querySelector('#add-card-form');

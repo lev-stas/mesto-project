@@ -64,3 +64,16 @@ export function editProfile(myName, description) {
         })
     });
 };
+
+export function editAvatarImage(avatarLink) {
+    fetch('https://nomoreparties.co/v1/plus-cohort-9/users/me/avatar', {
+        method: 'PATCH',
+        headers: {
+            authorization: 'c74b18e0-4a10-4f3c-8fc2-aaf6d9f451dc',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            avatar: avatarLink
+        })
+    })
+};
