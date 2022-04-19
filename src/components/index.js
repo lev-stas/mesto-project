@@ -21,11 +21,16 @@ import {
 
 //import functions
 import { createCard } from './cards.js';
-import { openPopup, closePopup, clickClosePopup, escapeClosePopup } from './popup.js';
-import { editProfileInfo } from './profile.js';
+import { openPopup, closePopup } from './popup.js';
+import { fillProfile, editProfileInfo } from './profile.js';
 import { enableValidation } from './validation.js';
+import { getProfileRequest } from './api.js';
 
 //default script
+fillProfile(getProfileRequest)
+
+
+// getCards();
 
 startImagesList.forEach((startImageItem) => {
     const cardTitle = startImageItem.title;
@@ -51,6 +56,7 @@ popups.forEach((popup) => {
 //profile processing
 editProfileButton.addEventListener('click', function() {
     openPopup(profilePopup);
+
 });
 
 profileForm.addEventListener('submit', function(evt) {
