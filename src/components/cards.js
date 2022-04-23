@@ -2,9 +2,17 @@ import {
     cardTemplate,
     picturePopup,
     picturePopupImage,
-    picturePopupLabel
+    picturePopupLabel,
 } from './vars.js';
 import { openPopup } from './popup.js';
+
+export function loadCards(request) {
+    request()
+        .then((data) => {
+            console.log(data)
+        })
+};
+
 
 export function createCard(title, link) {
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);

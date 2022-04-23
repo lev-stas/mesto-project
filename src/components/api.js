@@ -1,17 +1,16 @@
-//Load cards from Server
+//import vars
 import {
-    profileTitle,
-    profileSubtitle
-} from "./vars.js";
+    basicUrl,
+    myToken,
+    cardsContainer
+} from './vars.js';
 
-import { fillProfile } from "./profile.js";
-
-
+//Load cards from Server
 export function getCards() {
-    fetch('https://nomoreparties.co/v1/plus-cohort-9/cards', {
+    return fetch(`${basicUrl}/cards`, {
             method: 'GET',
             headers: {
-                authorization: 'c74b18e0-4a10-4f3c-8fc2-aaf6d9f451dc'
+                authorization: myToken
             }
         })
         .then((res) => {
@@ -21,20 +20,19 @@ export function getCards() {
                 return res.status
             }
         })
-        .then((data) => {
-            console.log(data);
-        });
+        .catch((error) => {
+            console.log(error)
+        })
 
 };
-
 
 //Profile info
 
 export function getProfileRequest() {
-    const promise = fetch('https://nomoreparties.co/v1/plus-cohort-9/users/me', {
+    return fetch(`${basicUrl}/users/me`, {
             method: 'GET',
             headers: {
-                authorization: 'c74b18e0-4a10-4f3c-8fc2-aaf6d9f451dc'
+                authorization: myToken
             }
         })
         .then((res) => {
@@ -46,16 +44,16 @@ export function getProfileRequest() {
 
         })
         .catch((err) => console.log(err));
-    return promise;
+
 };
 
 
 
 export function editProfile(myName, description) {
-    fetch('https://nomoreparties.co/v1/plus-cohort-9/users/me', {
+    fetch(`${basicUrl}/users/me`, {
         method: 'PATCH',
         headers: {
-            authorization: 'c74b18e0-4a10-4f3c-8fc2-aaf6d9f451dc',
+            authorization: myToken,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -66,10 +64,10 @@ export function editProfile(myName, description) {
 };
 
 export function editAvatarImage(avatarLink) {
-    fetch('https://nomoreparties.co/v1/plus-cohort-9/users/me/avatar', {
+    fetch(`${basicUrl}/users/me/avatar`, {
         method: 'PATCH',
         headers: {
-            authorization: 'c74b18e0-4a10-4f3c-8fc2-aaf6d9f451dc',
+            authorization: myToken,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({

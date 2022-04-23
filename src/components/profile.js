@@ -16,16 +16,6 @@ import {
 import { getProfileRequest, editProfile, editAvatarImage } from './api.js';
 import { closePopup } from './popup.js';
 
-export function fillProfile(request) {
-    const profile = request();
-    profile
-        .then((data) => {
-            profileTitle.textContent = data.name;
-            profileSubtitle.textContent = data.about;
-        })
-
-};
-
 export function editProfileInfo() {
     const profileName = profilePopupNameField.value;
     const profileDescription = profilePopupDescriptionField.value;
@@ -37,18 +27,9 @@ export function editProfileInfo() {
 export function editAvatar() {
     const avatarLink = avatarUrlField.value;
     editAvatarImage(avatarLink);
-    getProgileImage(getProfileRequest);
+    getProfileImage(getProfileRequest);
     avatarForm.reset();
     avatarSaveButton.classList.add('popup__submit_inactive'),
         avatarSaveButton.disabled = true;
     closePopup(avatarPopup);
-};
-
-export function getProgileImage(request) {
-    const profile = request();
-    profile
-        .then((data) => {
-            avatar.src = data.avatar,
-                avatar.alt = `фото ${data.name}`
-        })
 };

@@ -74,3 +74,8 @@ export const startImagesList = [{
         link: 'https://images.unsplash.com/photo-1607516100924-9a3f2c801cfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHJ1c3NpYSUyMG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60'
     }
 ];
+
+//api vars
+export const basicUrl = 'https://nomoreparties.co/v1/plus-cohort-9';
+export const myToken = 'c74b18e0-4a10-4f3c-8fc2-aaf6d9f451dc';
+export let myId = '';
