@@ -26,6 +26,33 @@ export function getCards() {
 
 };
 
+//Add cards
+export const uploadCard = (cardLink, cardName) => {
+    return fetch(`${basicUrl}/cards`, {
+            method: 'POST',
+            headers: {
+                authorization: myToken,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: cardName,
+                link: cardLink
+            })
+        })
+        .then(res => res.json())
+};
+
+//Delete cards
+export const deleteCard = (cardId) => {
+    return fetch(`${basicUrl}/cards/${cardId}`, {
+        method: "DELETE",
+        headers: {
+            authorization: myToken
+        }
+    })
+};
+
+
 //Profile info
 
 export function getProfileRequest() {
