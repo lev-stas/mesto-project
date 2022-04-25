@@ -78,4 +78,3 @@ export const startImagesList = [{
 //api vars
 export const basicUrl = 'https://nomoreparties.co/v1/plus-cohort-9';
 export const myToken = 'c74b18e0-4a10-4f3c-8fc2-aaf6d9f451dc';
-export let myId = '';

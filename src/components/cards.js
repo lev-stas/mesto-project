@@ -3,18 +3,24 @@ import {
     picturePopup,
     picturePopupImage,
     picturePopupLabel,
+    cardsContainer
 } from './vars.js';
 import { openPopup } from './popup.js';
+import { deleteCard } from './api.js';
 
-export function loadCards(request) {
-    request()
-        .then((data) => {
-            console.log(data)
-        })
+export function loadCards(cards, userId) {
+    cards.forEach((card) => {
+        const startCard = createCard(card.name, card.link, card._id);
+        const trashButton = startCard.querySelector('.trash-button');
+        if (card.owner._id !== userId) {
+            trashButton.remove()
+        };
+        cardsContainer.append(startCard);
+    })
 };
 
 
-export function createCard(title, link) {
+export function createCard(title, link, id) {
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
     const elementPicture = cardElement.querySelector('.card__picture');
     cardElement.querySelector('.card__title').textContent = title;
@@ -26,7 +32,15 @@ export function createCard(title, link) {
     });
     const trashButton = cardElement.querySelector('.trash-button');
     trashButton.addEventListener('click', function(evt) {
-        cardElement.remove();
+        deleteCard(id)
+            .then(res => {
+                if (res.ok) {
+                    cardElement.remove();
+                } else {
+                    console.log(res.status)
+                }
+            });
+
     });
     elementPicture.addEventListener('click', function(evt) {
         openPopup(picturePopup);

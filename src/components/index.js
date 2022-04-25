@@ -8,8 +8,6 @@
         editProfileButton,
         profilePopup,
         profileForm,
-        profileTitle,
-        profileSubtitle,
         addCardButton,
         cardPopup,
         cardForm,
@@ -17,46 +15,41 @@
         cardPopupNameField,
         cardPopupDescriptionField,
         validationSettings,
-        avatar,
         avatarPopup,
         avatarOpenButton,
-        avatarForm
+        avatarForm,
     } from './vars.js';
 
 
     //import functions
-    import { createCard } from './cards.js';
+    import { createCard, loadCards } from './cards.js';
     import { openPopup, closePopup } from './popup.js';
-    import { editProfileInfo, editAvatar } from './profile.js';
+    import { editProfileInfo, editAvatar, updateProfileInfo, updateAvatar } from './profile.js';
     import { enableValidation } from './validation.js';
-    import { getProfileRequest, getCards } from './api.js';
+    import { getProfileRequest, getCards, uploadCard } from './api.js';
 
-    //Init Profile
+    //Init start page
     let userId
-    getProfileRequest()
-        .then(data => {
-            avatar.src = data.avatar;
-            avatar.alt = `фото ${data.name}`;
-            profileTitle.textContent = data.name;
-            profileSubtitle.textContent = data.about;
-            userId = data._id;
-        });
 
-    // Init cards;
-    getCards()
-        .then((cards) => {
-            cards.forEach((card) => {
-                const startCard = createCard(card.name, card.link);
-                const trashButton = startCard.querySelector('.trash-button');
-                if (card.owner._id !== userId) {
-                    trashButton.remove()
-                };
-                cardsContainer.append(startCard);
-            })
-        });
+    Promise.all([getProfileRequest(), getCards()])
+        .then(([usersData, cards]) => {
+            updateProfileInfo(usersData.name, usersData.about);
+            updateAvatar(usersData.avatar, usersData.name);
+            userId = usersData._id;
+            loadCards(cards, userId);
+            // cards.forEach((card) => {
+            //     const startCard = createCard(card.name, card.link, card._id);
+            //     const trashButton = startCard.querySelector('.trash-button');
+            //     if (card.owner._id !== userId) {
+            //         trashButton.remove()
+            //     };
+            //     cardsContainer.append(startCard);
+            // })
+        })
 
 
-    //closing popup
+
+    //closing popups
     popups.forEach((popup) => {
         popup.addEventListener('mousedown', (evt) => {
             if (evt.target.classList.contains('popup_opened')) {
@@ -98,13 +91,13 @@
         evt.preventDefault();
         const cardTitle = cardPopupNameField.value;
         const cardLink = cardPopupDescriptionField.value;
-        const newCard = createCard(cardTitle, cardLink);
-        cardsContainer.prepend(newCard);
+        uploadCard(cardLink, cardTitle)
+            .then(card => cardsContainer.prepend(createCard(cardTitle, cardLink, card._id)));
         cardForm.reset();
         createCardButton.classList.add('popup__submit_inactive');
         createCardButton.disabled = true;
-
         closePopup(cardPopup);
+
     });
 
     //validation processing
