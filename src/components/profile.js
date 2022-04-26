@@ -27,7 +27,7 @@ export function editProfileInfo() {
             closePopup(profilePopup);
         })
         .catch(error => console.log(error))
-        .finaly(() => {
+        .finally(() => {
             renderLoading(false, profileForm)
         })
 
