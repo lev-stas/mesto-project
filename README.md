@@ -13,5 +13,10 @@ Used technologies for this project:
   - JavaScript
   - webpack
 
+#### How to see
+You may see the example of this project on [Mesto-project](https://lev-stas.github.io/mesto-project/) page.
+
 #### Purpose of project
 This web page is a study project ow Web Developer cource powered by [Yandex Practicum](https://practicum.yandex.ru)
+
+
