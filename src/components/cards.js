@@ -21,7 +21,7 @@ export function loadCards(cards, userId) {
 };
 
 
-export function ifLoading(isLoading, form) {
+export function renderLoading(isLoading, form) {
     const button = form.querySelector('.popup__submit')
     if (form.id === 'add-card-form') {
         if (isLoading) {
@@ -39,6 +39,8 @@ export function ifLoading(isLoading, form) {
 
 }
 
+
+
 export function createCard(title, link, id, likes, isLiked) {
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
     const elementPicture = cardElement.querySelector('.card__picture');
@@ -54,38 +56,26 @@ export function createCard(title, link, id, likes, isLiked) {
         const likes = parseInt(likesNumber.textContent);
         if (evt.target.classList.contains('like-icon_active')) {
             unlikeCard(id)
-                .then(res => {
-                    if (res.ok) {
-                        evt.target.classList.remove('like-icon_active');
-                        likesNumber.textContent = likes - 1
-                    } else {
-                        console.log(res.status);
-                    }
+                .then((data) => {
+                    evt.target.classList.remove('like-icon_active');
+                    likesNumber.textContent = data.likes.length;
                 })
+                .catch(error => console.log(error))
         } else {
             likeCard(id)
-                .then(res => {
-                    if (res.ok) {
-                        evt.target.classList.add('like-icon_active');
-                        likesNumber.textContent = likes + 1
-                    } else {
-                        console.log(res.status)
-                    }
+                .then((data) => {
+                    evt.target.classList.add('like-icon_active');
+                    likesNumber.textContent = data.likes.length;
                 })
+                .catch(error => console.log(error))
         }
     });
     likesNumber.textContent = likes;
     const trashButton = cardElement.querySelector('.trash-button');
     trashButton.addEventListener('click', function(evt) {
         deleteCard(id)
-            .then(res => {
-                if (res.ok) {
-                    cardElement.remove();
-                } else {
-                    console.log(res.status)
-                }
-            });
-
+            .then(cardElement.remove())
+            .catch(error => console.log(error))
     });
     elementPicture.addEventListener('click', function(evt) {
         openPopup(picturePopup);

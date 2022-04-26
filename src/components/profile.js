@@ -16,20 +16,21 @@ import {
 //import functions
 import { getProfileRequest, editProfile, editAvatarImage } from './api.js';
 import { closePopup } from './popup.js';
-import { ifLoading } from './cards.js';
+import { renderLoading } from './cards.js';
 
 export function editProfileInfo() {
     const profileName = profilePopupNameField.value;
     const profileDescription = profilePopupDescriptionField.value;
     editProfile(profileName, profileDescription)
-        .then((res) => {
-            if (res.ok) {
-                updateProfileInfo(profileName, profileDescription);
-            } else { console.log(res.status) }
+        .then(() => {
+            updateProfileInfo(profileName, profileDescription);
+            closePopup(profilePopup);
         })
-        .catch(error => console.log(error));
-    closePopup(profilePopup);
-    ifLoading(false, profileForm)
+        .catch(error => console.log(error))
+        .finaly(() => {
+            renderLoading(false, profileForm)
+        })
+
 };
 
 export function updateProfileInfo(profileName, profileDescription) {
@@ -41,20 +42,19 @@ export function updateProfileInfo(profileName, profileDescription) {
 export function editAvatar() {
     const avatarLink = avatarUrlField.value;
     editAvatarImage(avatarLink)
-        .then(res => {
-            if (res.ok) {
-                getProfileRequest()
-                    .then(data => updateAvatar(data.avatar, data.name));
-            } else {
-                console.log(res.status)
-            }
+        .then(() => {
+            getProfileRequest()
+                .then(data => updateAvatar(data.avatar, data.name));
         })
-        .catch(error => console.log(error));
-    avatarForm.reset();
-    avatarSaveButton.classList.add('popup__submit_inactive');
-    avatarSaveButton.disabled = true;
-    closePopup(avatarPopup);
-    ifLoading(false, avatarForm);
+        .catch(error => console.log(error))
+        .finally(() => {
+            avatarForm.reset();
+            avatarSaveButton.classList.add('popup__submit_inactive');
+            avatarSaveButton.disabled = true;
+            closePopup(avatarPopup);
+            renderLoading(false, avatarForm);
+        });
+
 };
 
 export function updateAvatar(avatarLink, avatarName) {

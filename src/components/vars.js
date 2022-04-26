@@ -49,32 +49,3 @@ export const closePicturePopup = picturePopup.querySelector('.popup__close-butto
 //place cards elements
 export const cardsContainer = page.querySelector('.place-cards')
 export const cardTemplate = document.querySelector('#place-card').content;
-export const startImagesList = [{
-        title: 'Камчатка',
-        link: 'https://images.unsplash.com/photo-1568028476727-0c86534220fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1931&q=80'
-    },
-    {
-        title: 'Тульская область',
-        link: 'https://images.unsplash.com/photo-1609252880721-0d953278bcda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2835&q=80'
-    },
-    {
-        title: 'Крым',
-        link: 'https://images.unsplash.com/photo-1565342403917-671ac824577c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1810&q=80'
-    },
-    {
-        title: 'Байкал',
-        link: 'https://images.unsplash.com/photo-1548130516-2ca6aaeb84b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'
-    },
-    {
-        title: 'Камчатские гейзеры',
-        link: 'https://images.unsplash.com/photo-1535427284698-c8e68a1eb910?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1736&q=80'
-    },
-    {
-        title: 'Карелия',
-        link: 'https://images.unsplash.com/photo-1607516100924-9a3f2c801cfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHJ1c3NpYSUyMG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60'
-    }
-];
-
-//api vars
-export const basicUrl = 'https://nomoreparties.co/v1/plus-cohort-9';
-export const myToken = 'c74b18e0-4a10-4f3c-8fc2-aaf6d9f451dc';
