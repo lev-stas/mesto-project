@@ -14,7 +14,7 @@ import {
 } from './vars.js';
 
 //import functions
-import { getProfileRequest, editProfile, editAvatarImage } from './api.js';
+import { editProfile, editAvatarImage } from './api.js';
 import { closePopup } from './popup.js';
 import { renderLoading } from './cards.js';
 
@@ -42,18 +42,17 @@ export function updateProfileInfo(profileName, profileDescription) {
 export function editAvatar() {
     const avatarLink = avatarUrlField.value;
     editAvatarImage(avatarLink)
-        .then(() => {
-            getProfileRequest()
-                .then(data => updateAvatar(data.avatar, data.name));
+        .then((data) => {
+            updateAvatar(data.avatar, data.name);
         })
-        .catch(error => console.log(error))
-        .finally(() => {
+        .then(() => {
             avatarForm.reset();
             avatarSaveButton.classList.add('popup__submit_inactive');
             avatarSaveButton.disabled = true;
             closePopup(avatarPopup);
-            renderLoading(false, avatarForm);
-        });
+        })
+        .catch(error => console.log(error))
+        .finally(() => renderLoading(false, avatarForm));
 
 };
 

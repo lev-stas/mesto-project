@@ -53,7 +53,6 @@ export function createCard(title, link, id, likes, isLiked) {
         likeButton.classList.add('like-icon_active')
     }
     likeButton.addEventListener('click', function(evt) {
-        const likes = parseInt(likesNumber.textContent);
         if (evt.target.classList.contains('like-icon_active')) {
             unlikeCard(id)
                 .then((data) => {
@@ -74,7 +73,9 @@ export function createCard(title, link, id, likes, isLiked) {
     const trashButton = cardElement.querySelector('.trash-button');
     trashButton.addEventListener('click', function(evt) {
         deleteCard(id)
-            .then(cardElement.remove())
+            .then(() => {
+                cardElement.remove()
+            })
             .catch(error => console.log(error))
     });
     elementPicture.addEventListener('click', function(evt) {

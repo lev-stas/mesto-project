@@ -49,6 +49,7 @@
                 cardsContainer.append(startCard);
             })
         })
+        .catch(error => console.log(error));
 
 
 
