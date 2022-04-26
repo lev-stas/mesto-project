@@ -24,7 +24,6 @@ export function getCards() {
             headers: config.headers
         })
         .then(checkResponse)
-        .catch((err) => console.log(err))
 
 };
 
@@ -76,7 +75,6 @@ export function getProfileRequest() {
             headers: config.headers
         })
         .then(checkResponse)
-        .catch((err) => console.log(err));
 
 };
 
