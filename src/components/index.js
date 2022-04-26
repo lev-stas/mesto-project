@@ -8,6 +8,8 @@
         editProfileButton,
         profilePopup,
         profileForm,
+        profilePopupNameField,
+        profilePopupDescriptionField,
         addCardButton,
         cardPopup,
         cardForm,
@@ -22,7 +24,7 @@
 
 
     //import functions
-    import { createCard, ifLoading } from './cards.js';
+    import { createCard, renderLoading } from './cards.js';
     import { openPopup, closePopup } from './popup.js';
     import { editProfileInfo, editAvatar, updateProfileInfo, updateAvatar } from './profile.js';
     import { enableValidation } from './validation.js';
@@ -65,13 +67,18 @@
 
     //profile processing
     editProfileButton.addEventListener('click', function() {
-        openPopup(profilePopup);
-
+        getProfileRequest()
+            .then(data => {
+                profilePopupNameField.value = data.name;
+                profilePopupDescriptionField.value = data.about
+            })
+            .then(() => openPopup(profilePopup))
+            .catch(error => console.log(error))
     });
 
     profileForm.addEventListener('submit', function(evt) {
         evt.preventDefault();
-        ifLoading(true, profileForm)
+        renderLoading(true, profileForm)
         editProfileInfo();
     });
 
@@ -81,7 +88,7 @@
 
     avatarForm.addEventListener('submit', function(evt) {
         evt.preventDefault();
-        ifLoading(true, avatarForm);
+        renderLoading(true, avatarForm);
         editAvatar();
     });
 
@@ -92,25 +99,19 @@
 
     cardForm.addEventListener('submit', function(evt) {
         evt.preventDefault();
-        ifLoading(true, cardForm)
+        renderLoading(true, cardForm)
         const cardTitle = cardPopupNameField.value;
         const cardLink = cardPopupDescriptionField.value;
         uploadCard(cardLink, cardTitle)
-            .then(res => {
-                if (res.ok) {
-                    return res.json()
-                } else {
-                    console.log(res.status)
-                }
-            })
             .then(card => cardsContainer.prepend(createCard(cardTitle, cardLink, card._id, card.likes.length)))
+            .then(() => {
+                cardForm.reset();
+                createCardButton.classList.add('popup__submit_inactive');
+                createCardButton.disabled = true;
+                closePopup(cardPopup);
+            })
             .catch(error => console.log(error))
-            .finally(() => ifLoading(false, cardForm));
-        cardForm.reset();
-        createCardButton.classList.add('popup__submit_inactive');
-        createCardButton.disabled = true;
-        closePopup(cardPopup);
-
+            .finally(() => renderLoading(false, cardForm));
     });
 
     //validation processing
