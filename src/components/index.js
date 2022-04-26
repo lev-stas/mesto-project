@@ -22,7 +22,7 @@
 
 
     //import functions
-    import { createCard, loadCards } from './cards.js';
+    import { createCard, ifLoading } from './cards.js';
     import { openPopup, closePopup } from './popup.js';
     import { editProfileInfo, editAvatar, updateProfileInfo, updateAvatar } from './profile.js';
     import { enableValidation } from './validation.js';
@@ -36,15 +36,16 @@
             updateProfileInfo(usersData.name, usersData.about);
             updateAvatar(usersData.avatar, usersData.name);
             userId = usersData._id;
-            loadCards(cards, userId);
-            // cards.forEach((card) => {
-            //     const startCard = createCard(card.name, card.link, card._id);
-            //     const trashButton = startCard.querySelector('.trash-button');
-            //     if (card.owner._id !== userId) {
-            //         trashButton.remove()
-            //     };
-            //     cardsContainer.append(startCard);
-            // })
+            cards.forEach((card) => {
+                const likes = card.likes.length
+                const isLiked = card.likes.some(item => item._id === userId);
+                const startCard = createCard(card.name, card.link, card._id, likes, isLiked);
+                const trashButton = startCard.querySelector('.trash-button');
+                if (card.owner._id !== userId) {
+                    trashButton.remove()
+                };
+                cardsContainer.append(startCard);
+            })
         })
 
 
@@ -70,6 +71,7 @@
 
     profileForm.addEventListener('submit', function(evt) {
         evt.preventDefault();
+        ifLoading(true, profileForm)
         editProfileInfo();
     });
 
@@ -79,6 +81,7 @@
 
     avatarForm.addEventListener('submit', function(evt) {
         evt.preventDefault();
+        ifLoading(true, avatarForm);
         editAvatar();
     });
 
@@ -89,10 +92,20 @@
 
     cardForm.addEventListener('submit', function(evt) {
         evt.preventDefault();
+        ifLoading(true, cardForm)
         const cardTitle = cardPopupNameField.value;
         const cardLink = cardPopupDescriptionField.value;
         uploadCard(cardLink, cardTitle)
-            .then(card => cardsContainer.prepend(createCard(cardTitle, cardLink, card._id)));
+            .then(res => {
+                if (res.ok) {
+                    return res.json()
+                } else {
+                    console.log(res.status)
+                }
+            })
+            .then(card => cardsContainer.prepend(createCard(cardTitle, cardLink, card._id, card.likes.length)))
+            .catch(error => console.log(error))
+            .finally(() => ifLoading(false, cardForm));
         cardForm.reset();
         createCardButton.classList.add('popup__submit_inactive');
         createCardButton.disabled = true;
